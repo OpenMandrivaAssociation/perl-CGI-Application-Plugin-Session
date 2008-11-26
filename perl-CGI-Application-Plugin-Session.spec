@@ -1,6 +1,6 @@
 %define module   CGI-Application-Plugin-Session
 %define version    1.03
-%define release    %mkrel 1
+%define release    %mkrel 2
 
 Name:       perl-%{module}
 Version:    %{version}
@@ -16,6 +16,7 @@ BuildRequires: perl(File::Spec)
 BuildRequires: perl(Scalar::Util)
 BuildRequires: perl(Test::More)
 BuildRequires: perl(Module::Build::Compat)
+Requires:      perl(CGI::Session)
 BuildArch: noarch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
