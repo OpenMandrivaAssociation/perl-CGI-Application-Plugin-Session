@@ -1,15 +1,16 @@
-%define module   CGI-Application-Plugin-Session
-%define version    1.03
-%define release    %mkrel 2
+%define upstream_name    CGI-Application-Plugin-Session
+%define upstream_version 1.03
 
-Name:       perl-%{module}
-Version:    %{version}
-Release:    %{release}
-License:    GPL or Artistic
-Group:      Development/Perl
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:    Add CGI::Session support to CGI::Application
-Source:     http://www.cpan.org/modules/by-module/CGI/%{module}-%{version}.tar.gz
-Url:        http://search.cpan.org/dist/%{module}
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildRequires: perl(CGI::Application)
 BuildRequires: perl(CGI::Session)
 BuildRequires: perl(File::Spec)
@@ -18,7 +19,7 @@ BuildRequires: perl(Test::More)
 BuildRequires: perl(Module::Build::Compat)
 Requires:      perl(CGI::Session)
 BuildArch: noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 CGI::Application::Plugin::Session seamlessly adds session support to your
@@ -38,7 +39,7 @@ adds a couple of new methods directly into the CGI::Application namespace
 simply by loading the module. 
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -59,5 +60,3 @@ rm -rf %buildroot
 %doc Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
-
