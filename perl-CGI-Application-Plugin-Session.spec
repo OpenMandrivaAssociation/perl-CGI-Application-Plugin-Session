@@ -1,25 +1,25 @@
 %define upstream_name    CGI-Application-Plugin-Session
 %define upstream_version 1.03
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Add CGI::Session support to CGI::Application
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Add CGI::Session support to CGI::Application
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(CGI::Application)
-BuildRequires: perl(CGI::Session)
-BuildRequires: perl(File::Spec)
-BuildRequires: perl(Scalar::Util)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Module::Build::Compat)
-Requires:      perl(CGI::Session)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(CGI::Application)
+BuildRequires:	perl(CGI::Session)
+BuildRequires:	perl(File::Spec)
+BuildRequires:	perl(Scalar::Util)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Module::Build::Compat)
+Requires:	perl(CGI::Session)
+BuildArch:	noarch
 
 %description
 CGI::Application::Plugin::Session seamlessly adds session support to your
@@ -42,21 +42,38 @@ simply by loading the module.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Sat Apr 16 2011 Funda Wang <fwang@mandriva.org> 1.30.0-2mdv2011.0
++ Revision: 653392
+- rebuild for updated spec-helper
+
+* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 1.30.0-1mdv2011.0
++ Revision: 405778
+- rebuild using %%perl_convert_version
+
+* Wed Nov 26 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.03-2mdv2009.1
++ Revision: 307082
+- add missing dependency on CGI::Session
+
+* Fri Oct 10 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.03-1mdv2009.1
++ Revision: 291355
+- import perl-CGI-Application-Plugin-Session
+
+
+* Thu Oct 09 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.03-1mdv2009.1
+- initial mdv release, generated with cpan2dist
+
