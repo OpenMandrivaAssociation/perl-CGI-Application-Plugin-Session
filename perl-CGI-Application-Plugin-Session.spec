@@ -1,15 +1,15 @@
 %define upstream_name    CGI-Application-Plugin-Session
-%define upstream_version 1.03
+%define upstream_version 1.05
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Release:	1
 
 Summary:	Add CGI::Session support to CGI::Application
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/CGI/CGI-Application-Plugin-Session-%{upstream_version}.tar.gz
 
 BuildRequires:	perl-devel
 BuildRequires:	perl(CGI::Application)
@@ -76,4 +76,5 @@ make test
 
 * Thu Oct 09 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.03-1mdv2009.1
 - initial mdv release, generated with cpan2dist
+
 

@@ -1,2 +1,4 @@
+removed_sources:
+  CGI-Application-Plugin-Session-1.03.tar.gz: fc1d6b39ed842369170a8752ee6b73d99d49a9fc
 sources:
-  "CGI-Application-Plugin-Session-1.03.tar.gz": fc1d6b39ed842369170a8752ee6b73d99d49a9fc
+  CGI-Application-Plugin-Session-1.05.tar.gz: 46607678d8c909cce0d5ab804b140caa954a7f28
